@@ -1,14 +1,14 @@
-\---
-
+---
 layout: post
 
 title: "Feature Selection in Linear Model"
 
 author: "Dylan"
+---
 
-\---
 
-######Practice Example One
+
+##### Practice Example One
 
 Get first 500 features based on mean, std, missing values' percentage.
 
@@ -28,7 +28,7 @@ Say y20 variables are left - then use stepwise again along with out of time vali
 
 
 
-######Practice Example Two
+##### Practice Example Two
 
 Univariate Feature Selection
 
