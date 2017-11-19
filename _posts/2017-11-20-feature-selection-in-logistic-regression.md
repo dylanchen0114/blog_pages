@@ -22,15 +22,11 @@ Use VIF to get rid of multi collinearity in scientific way.
 
 Say y20 variables are left - then use stepwise again along with out of time validation procedures (rank ordering, scoring, co efficient stability, KS, GINI stability) to select most powerful variable for the model.
 
-  
-
-
+&npsp;
 
 -----
 
-  
-
-
+&npsp;
 
 ### Practice Example Two
 
