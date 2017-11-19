@@ -2,7 +2,7 @@
 permalink:      /:year-:month-:day/:title
 
 # Setup
-title:          Dylan's mini blog
+title:          Dylan's Mini Blog.
 paginate:       5
 baseurl:        "/"
 url:            "https://dylanchen0114.github.io"
