@@ -2,7 +2,7 @@
 permalink:      /:year-:month-:day/:title
 
 # Setup
-title:          Tale
+title:          Dylan's mini blog
 paginate:       5
 baseurl:        "/"
 url:            "https://dylanchen0114.github.io"
@@ -17,14 +17,14 @@ markdown:       kramdown
 
 # About
 author:
-  name:         Chester How
-  url:          http://chester.how
-  email:        chesterhow@gmail.com
+  name:         Dylan Chen
+  url:
+  email:        dylanchen14@sina.com
 
 # Custom vars
 version:        3.4.1
 github:
-  repo:         https://github.com/chesterhow/tale
+  repo:         https://dylanchen0114.github.io
 
 # Gems
 gems:
