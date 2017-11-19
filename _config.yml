@@ -4,7 +4,7 @@ permalink:      /:year-:month-:day/:title
 # Setup
 title:          Go For the Extra Miles
 paginate:       5
-baseurl:        "/blog_pages"
+baseurl:        "/"
 url:            "https://dylanchen0114.github.io"
 
 # Assets
