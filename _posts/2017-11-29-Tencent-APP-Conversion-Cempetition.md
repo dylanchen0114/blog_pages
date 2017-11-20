@@ -6,7 +6,7 @@ title: "Tencent-APP-Convertion-Prediction"
 author: "Dylan"
 ---
 
-<font face="华文楷体">
+
 
 ## 主要特征
 
@@ -14,7 +14,7 @@ author: "Dylan"
 
 #### APP安装表类特征
 
-每个APP的安装用户数，每个APP类别的安装用户数
+<font face="华文楷体"> 每个APP的安装用户数，每个APP类别的安装用户数 </font>
 
 每个用户安装APP的个数，每种教育等级、性别、年龄安装APP的个数。
 
@@ -26,4 +26,3 @@ author: "Dylan"
 
 
 
-</font>
