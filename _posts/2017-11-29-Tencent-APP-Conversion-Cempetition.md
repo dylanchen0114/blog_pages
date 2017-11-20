@@ -30,7 +30,9 @@ author: "Dylan"
 
 <br>
 
-特征的组合方式非常多，选取哪些特征来做组合？
+**特征的组合方式非常多，选取哪些特征来做组合？**
+
+<br>
 
 **穷举后用卡方检验筛特征**
 
@@ -47,21 +49,21 @@ author: "Dylan"
 
 <br>
 
-**用GBDT筛特征**
+**用gbdt筛选特征**
 
-*主要思想*：
+主要思想：
 GBDT每棵树的路径直接作为LR输入特征使用。
 
-*原理*：
+原理：
 用已有特征训练GBDT模型，然后利用GBDT模型学习到的树来构造新特征，最后把这些新特征加入原有特征一起训练模型。构造的新特征向量是取值0/1的，向量的每个元素对应于GBDT模型中树的叶子结点。当一个样本点通过某棵树最终落在这棵树的一个叶子结点上，那么在新特征向量中这个叶子结点对应的元素值为1，而这棵树的其他叶子结点对应的元素值为0。新特征向量的长度等于GBDT模型里所有树包含的叶子结点数之和。
 
-*步骤*：
+步骤：
 
 1. 首先要切分数据集，一部分用于训练GBDT，另一部分使用训练好的GBDT模型
 2. GBDT模型的apply方法生成x在GBDT每个树中的index，然后通过onehot编码做成特征。
 3. 新的特征输入到分类（如LR）模型中训练分类器。
 
-*实现*：
+实现：
 参考文献[GBDT原理及利用GBDT构造新的特征-Python实现](http://blog.csdn.net/shine19930820/article/details/71713680)的末尾有一个调用GBDT训练模型构建树，调用[apply()](http://blog.csdn.net/shine19930820/article/details/71713680)方法得到特征，然后将特征通过one-hot编码后作为新的模型输入LR进行训练。[feature trainsformation with ensembles of tree官方文档](http://scikit-learn.org/stable/auto_examples/ensemble/plot_feature_transformation.html#example-ensemble-plot-feature-transformation-py)
 
 
