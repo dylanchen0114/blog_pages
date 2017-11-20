@@ -66,5 +66,10 @@ GBDT每棵树的路径直接作为LR输入特征使用。
 实现：
 参考文献[GBDT原理及利用GBDT构造新的特征-Python实现](http://blog.csdn.net/shine19930820/article/details/71713680)的末尾有一个调用GBDT训练模型构建树，调用[apply()](http://blog.csdn.net/shine19930820/article/details/71713680)方法得到特征，然后将特征通过one-hot编码后作为新的模型输入LR进行训练。[feature trainsformation with ensembles of tree官方文档](http://scikit-learn.org/stable/auto_examples/ensemble/plot_feature_transformation.html#example-ensemble-plot-feature-transformation-py)
 
+<br>
 
+#### APP回流时间特征
 
+*回流时间：转化时间与点击时间的间隔*
+
+每个app_id的平均回流时间，回流时间缺失的用该app类别的平均转化时间来代替
