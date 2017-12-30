@@ -13,9 +13,9 @@ title                    : "Dylan's Mini Blog"
 title_separator          : "-"
 name                     : "Dylan Chen"
 description              : "notes about machine learning."
-url                      : "www.dylan-chen.com"
+url                      : "/"
 baseurl                  : "/"
-repository               : "dylanchen0114/blot_pages"
+repository               : "/"
 teaser                   : "/docs/ssets/images/500x300.png"
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 200
