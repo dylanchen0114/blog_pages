@@ -5,18 +5,18 @@
 # For technical reasons, this file is *NOT* reloaded automatically when you use
 # `jekyll serve`. If you change this file, please restart the server process.
 
-minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+minimal_mistakes_skin    : "mint"
 
 # Site Settings
-locale                   : "en"
+locale                   : "zh-CN"
 title                    : "Dylan's Mini Blog"
 title_separator          : "-"
 name                     : "Dylan Chen"
 description              : "An amazing website."
-url                      : "https://dylanchen0114.github.io"
+url                      : "www.dylan-chen.com"  # "https://dylanchen0114.github.io"
 baseurl                  : "/"
-repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
-teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
+repository               : "dylanchen0114/blog_pages"
+teaser                   : "/assets/images/500x300.png"
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 200
 comments:
@@ -51,7 +51,7 @@ reCaptcha:
   secret                 :
 atom_feed:
   path                   : # blank (default) uses feed.xml
-search                   : # true, false (default)
+search                   : true
 
 # SEO Related
 google_site_verification :
