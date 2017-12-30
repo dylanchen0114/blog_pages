@@ -8,12 +8,12 @@
 minimal_mistakes_skin    : "mint"
 
 # Site Settings
-locale                   : "zh-CN"
+locale                   : "en"
 title                    : "Dylan's Mini Blog"
 title_separator          : "-"
 name                     : "Dylan Chen"
 description              : "notes about machine learning."
-url                      : "/"
+url                      : "http://www.dylan-chen.com/"
 baseurl                  : "/"
 repository               : "/"
 teaser                   : "/docs/ssets/images/500x300.png"
