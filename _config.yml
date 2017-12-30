@@ -84,10 +84,10 @@ analytics:
 # Site Author
 author:
   name             : "Dylan Chen"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "Data Scientist"
+  avatar           : "/assets/images/bio-photo.png"
+  bio              : "A data scientist newbie, and want to be a kaggle master someday"
   location         : "Shanghai, China"
-  email            :
+  email            : "www.dylanchen0114.com"
   uri              :
   home             : # null (default), "absolute or relative url to link to author home"
   bitbucket        :
@@ -96,7 +96,7 @@ author:
   flickr           :
   facebook         :
   foursquare       :
-  github           :
+  github           : "github.com/dylanchen0114"
   gitlab           :
   google_plus      :
   keybase          :
