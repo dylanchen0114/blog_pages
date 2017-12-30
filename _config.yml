@@ -84,8 +84,8 @@ analytics:
 # Site Author
 author:
   name             : "Dylan Chen"
-  avatar           : "/assets/images/bio-photo.png"
-  bio              : "A data scientist newbie, and want to be a kaggle master someday"
+  avatar           : "/assets/images/bi-photo.png"
+  bio              : "data scientist newbie, want to be a kaggle master someday"
   location         : "Shanghai, China"
   email            : "www.dylanchen0114.com"
   uri              :
