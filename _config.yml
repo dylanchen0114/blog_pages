@@ -13,7 +13,7 @@ title                    : "Dylan's Mini Blog"
 title_separator          : "-"
 name                     : "Dylan Chen"
 description              : "notes about machine learning."
-url                      : "http://www.dylan-chen.com/"
+url                      : "http://www.dylan-chen.com"
 baseurl                  : "/"
 repository               : "/"
 teaser                   : "/docs/ssets/images/500x300.png"
@@ -83,10 +83,10 @@ analytics:
 
 # Site Author
 author:
-  name             : "Your Name"
+  name             : "Dylan Chen"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "I am an amazing person."
-  location         : "Somewhere"
+  bio              : "Data Scientist"
+  location         : "Shanghai, China"
   email            :
   uri              :
   home             : # null (default), "absolute or relative url to link to author home"
