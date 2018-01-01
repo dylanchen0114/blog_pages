@@ -220,12 +220,12 @@ def timezone(s):
 *  min, max, median, mean, std of order size when this user buy this item
 
    ```Python
-   'user_order_size-min'  - 'useritem_cooccur-min'
-   'useritem_cooccur-max' - 'useritem_cooccur-min'
-   'user_order_size-max' - 'useritem_cooccur-max'
+   tbl['user_order_size-min']  - tbl['useritem_cooccur-min']
+   tbl['useritem_cooccur-max'] - tbl['useritem_cooccur-min']
+   tbl['user_order_size-max'] - tbl['useritem_cooccur-max']
    ```
 
-   user_order_size-min(max) means min/max order size by user
+   *user_order_size-min(max) means min/max order size by user*
 
 ### streak
 
