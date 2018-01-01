@@ -21,7 +21,7 @@ Instead of giving a detailed explanation about the competition challenge, EDA an
 
 ### repeat_previous_ratio 
 
-*  Repeat product in previous orders ratio:
+*  repeat product in previous orders ratio:
 
    *intersection(previous & current) / current*
 
@@ -29,19 +29,17 @@ Instead of giving a detailed explanation about the competition challenge, EDA an
 
    chance = how many products in current order
 
-*  Reordered and non-reordered products ratio in current order
+*  reordered and non-reordered products ratio in current order
 
-*  Each order's non-reordered products counts, non-reordered_cumsum and this cumsum/order_sequence_number
+*  non-reordered products counts, non-reordered_cumsum and this cumsum/order_sequence_number
 
-*  Each order's size, cumsum, and this cumsum/order_sequence_number
+*  order's size, cumsum, and this cumsum/order_sequence_number
 
 ### orderspan_average
 
-*  The mean of days_since_prior_order
+*  the mean of days_since_prior_order
 
 ### visit_time
-
-timezone are defined as following:
 
 ```python
 def timezone(s):
@@ -55,12 +53,34 @@ def timezone(s):
         return 'night'
 ```
 
-*  User's visit frequency and normalized frequency in each day_of_week
-*  User's visit frequency and normalized frequency in each timezone
-*  User's visit frequency and normalized frequency in each timezone*day_of_week
+*  day_of_week (normalized) visit frequency
+*  timezone (normalized) visit frequency
+*  timezone*day_of_week (normalized) visit frequency
 
 ### organic
 
-*  Each user's total count of organic products / Each user's total orders count
-*  Each user's total count of gluten-free products / Each user's total orders count
-*  Each user's total count of is_Asian products / Each user's total orders count
+*  organic products count / total orders count
+*  gluten-free products count / total orders count
+*  is_Asian products count / total orders count
+
+### delta_time
+
+*  delta hours of order_hour_of_day between current order and previous **t** order (t: 1~3)
+
+### order_size
+
+*  min, max, median, mean, std order size of each user
+
+### have_you_bought
+
+*  whether or not users have bought high-frequency products; as one-hot encoding
+
+### None
+
+*  tag previous t order whether or not is **None** order (t: 1~20)
+*  None order: all products in this order are all new items (not bought before by this user)
+
+## Item Feature
+
+
+
