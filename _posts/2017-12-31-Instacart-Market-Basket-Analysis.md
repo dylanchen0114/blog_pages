@@ -217,12 +217,12 @@ def timezone(s):
 
 ### co-occur
 
-*  min, max, median, mean, std of order size when this user buy this item
+*  min, max, median, mean, std of order size when user buy this item
 
    ```Python
-   tbl['user_order_size-min']  - tbl['useritem_cooccur-min']
-   tbl['useritem_cooccur-max'] - tbl['useritem_cooccur-min']
-   tbl['user_order_size-max'] - tbl['useritem_cooccur-max']
+   tbl['useritem_cooccur-min-min'] = tbl['user_order_size-min']  - tbl['useritem_cooccur-min']
+   tbl['useritem_cooccur-max-min'] = tbl['useritem_cooccur-max'] - tbl['useritem_cooccur-min']
+   tbl['useritem_cooccur-max-max'] = tbl['user_order_size-max'] - tbl['useritem_cooccur-max']
    ```
 
    *user_order_size-min(max) means min/max order size by user*
