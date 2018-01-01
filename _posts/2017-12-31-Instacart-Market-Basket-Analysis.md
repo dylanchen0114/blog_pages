@@ -61,14 +61,6 @@ def timezone(s):
 
 ### organic
 
-Is_organic, gluten-free and is_Asian are defined as following:
-
-```Python
-item['item_is_Organic'] = item.product_name.map(lambda x: 'organic' in x.lower())*1
-item['item_is_Gluten-Free'] = item.product_name.map(lambda x: 'gluten' in x.lower() and 'free' in x.lower())*1
-item['item_is_Asian'] = item.product_name.map(lambda x: 'asian' in x.lower())*1
-```
-
 *  Each user's total count of organic products / Each user's total orders count
 *  Each user's total count of gluten-free products / Each user's total orders count
 *  Each user's total count of is_Asian products / Each user's total orders count
