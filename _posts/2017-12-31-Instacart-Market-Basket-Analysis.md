@@ -1,5 +1,5 @@
 ---
-title: "Instacart-Market-Basket-Analysis"
+title: "Instacart-Market-Basket-Analysis-part1"
 comments: true
 share: true
 toc: true
@@ -13,11 +13,9 @@ tags:
 
 This post generally describes what validation strategy, what kinds of features and models were made by konoder to win the second place of this competition.
 
-Instead of giving a detailed explanation about the competition challenge, EDA and how he considered the problem, this post just directly dive into the code of feature engineering and model parts.
+Instead of giving a detailed explanation about the competition challenge, EDA and how he considered the problem, this post just directly dive into the code of feature engineering part.
 
 
-
-# Features
 
 ## User Feature
 
@@ -238,7 +236,7 @@ def timezone(s):
 
 *  normalized order and user count by hour_of_day
 
-*  ```python
+   ```python
    dow['dow_rank_diff'] = dow.dow_order_cnt.rank() - dow.dow_item_cnt.rank()
    hour['hour_rank_diff'] = hour.hour_order_cnt.rank() - hour.hour_item_cnt.rank()
    ```
