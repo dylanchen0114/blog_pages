@@ -219,7 +219,7 @@ def timezone(s):
 
 *  min, max, median, mean, std of order size when user buy this item
 
-   ```Python
+   ```python
    tbl['useritem_cooccur-min-min'] = tbl['user_order_size-min']  - tbl['useritem_cooccur-min']
    tbl['useritem_cooccur-max-min'] = tbl['useritem_cooccur-max'] - tbl['useritem_cooccur-min']
    tbl['useritem_cooccur-max-max'] = tbl['user_order_size-max'] - tbl['useritem_cooccur-max']
