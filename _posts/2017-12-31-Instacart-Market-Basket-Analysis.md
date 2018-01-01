@@ -17,6 +17,8 @@ Instead of giving a detailed explanation about the competition challenge, EDA an
 
 
 
+# Features
+
 ## User Feature
 
 ### repeat_previous_ratio 
@@ -82,5 +84,80 @@ def timezone(s):
 
 ## Item Feature
 
+### buy_time
 
+*  (unique) count and ratio by product and hour
+
+   *where unique means dropping duplicates by user, product and hour*
+
+*  (unique) count and ratio by product and day_of_week
+
+*  (unique) count and ratio by product and timezone
+
+*  (unique) count and ratio by product and timezone*day_of_week
+
+### cycle
+
+*  min, max, median, mean, std of dat_since_prior_order
+*  total order count of products, total reorder count of products, ratio
+*  total user count of products
+*  order count / user count
+
+### co-occur
+
+### mean_pos_cart
+
+*  min, max, mean, median, std of add_to_cart_order
+
+### one_shot
+
+*  count of users that buy this product only once
+*  ratio: above count / total users this product
+
+### together
+
+*  min, max, mean, median, std of total order size when this product is bought
+
+### streak
+
+### 1to1
+
+*  ratio of 1to1, 11to1, 10to1, 111to1, 110to1, 101to1, 100to1
+
+   ```python
+   # calculate by user
+   pd.crosstab(tmp.order_number, tmp.product_id)
+   ```
+
+   ratio = counts / chance
+
+   If previous order match the pattern before 'to', chance += 1
+
+   If current order match the pattern after 'to', counts += 1
+
+### within-N
+
+*  the probability each product will be reordered within **N** orders (N: 2~5)
+
+   ratio = counts / chance
+
+   chance: how many times user buy this product (except the last N orders)
+
+   counts: how many times user reorder this product within N
+
+### dow_diff
+
+*  ratio = ratio1 - ratio2
+
+   ratio1: normalized value counts by day_of_week
+
+   ratio2: count by product and day_of_week / total count of each product
+
+### first_order
+
+### one_diff
+
+## User x Item Feature
+
+### total_buy
 
