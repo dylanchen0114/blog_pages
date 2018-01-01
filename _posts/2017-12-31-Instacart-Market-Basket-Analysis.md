@@ -19,13 +19,17 @@ Instead of giving a detailed explanation about the competition challenge, EDA an
 
 ## User Feature
 
-*  repeat product in previous orders ratio: *intersection(previous & current) / current*
+*  Repeat product in previous orders ratio:
 
-   Counts = how many products in previous **W** order set are repeated in current order (where W means window size: 1~5)
+   *intersection(previous & current) / current*
 
-   Chance = how many products in current order (all)
+   counts = how many products in previous **W** order set are repeated in current order (where W means window size: 1~5)
 
-*  ​
+   chance = how many products in current order (all)
+
+*  Reordered and non-reordered products ratio in current order
+
+*  Non-reordered products counts
 
 
 
