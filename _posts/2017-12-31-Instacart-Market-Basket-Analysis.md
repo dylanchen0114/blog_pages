@@ -73,12 +73,13 @@ def timezone(s):
 
 ### have_you_bought
 
-*  whether or not users have bought high-frequency products; as one-hot encoding
+*  whether or not users have bought high-frequency products (one-hot encoding)
 
 ### None
 
 *  tag previous t order whether or not is **None** order (t: 1~20)
-*  None order: all products in this order are all new items (not bought before by this user)
+
+   None order: all products in this order are all new items (not bought before by this user)
 
 ## Item Feature
 
@@ -115,7 +116,7 @@ def timezone(s):
 
 ### together
 
-*  min, max, mean, median, std of order size when this product is bought
+*  min, max, mean, median, std of order size the product is bought
 
 ### streak
 
@@ -136,21 +137,21 @@ def timezone(s):
 
 ### within-N
 
-*  the probability each product will be reordered within **N** orders (N: 2~5)
+*  probability product will be reordered within **N** orders (N: 2~5)
 
    ratio = counts / chance
 
-   chance: how many times user buy this product (except the last N orders)
+   chance: times user buy this product (except the last N orders)
 
-   counts: how many times user reorder this product within N
+   counts: times user reorder this product within N
 
 ### dow_diff
 
 *  ratio = ratio1 - ratio2
 
-   ratio1: normalized value counts by day_of_week
+   ratio1: normalized value counts by dow
 
-   ratio2: count by product and day_of_week / total count of each product
+   ratio2: count by product and dow / total count of each product
 
 ### first_order
 
@@ -189,9 +190,9 @@ def timezone(s):
 
 ### timezone_dow
 
-*  count by user, product and timezone (or day_of_week)
+*  count by user, product and tz (or dow)
 *  ratio1: above count / count by user and product
-*  ratio2: above count / count by user and timezone (or day_of_week)
+*  ratio2: above count / count by user and tz (or dow)
 
 ### order_ratio_by_chance
 
@@ -209,7 +210,7 @@ def timezone(s):
 
 ### cycle
 
-*  min, max, mean, median, std of days_since_last_order_this_item
+*  min, max, mean, median, std of days since last order this item
 *  near 5 orders above features
 
 ### aisle_dep
@@ -218,11 +219,13 @@ def timezone(s):
 
 *  min, max, median, mean, std of order size when this user buy this item
 
-*  'user_order_size-min'  - 'useritem_cooccur-min'
+   ```Python
+   'user_order_size-min'  - 'useritem_cooccur-min'
    'useritem_cooccur-max' - 'useritem_cooccur-min'
    'user_order_size-max' - 'useritem_cooccur-max'
+   ```
 
-   where user_order_size-min(max) means min/max order size by user
+   user_order_size-min(max) means min/max order size by user
 
 ### streak
 
