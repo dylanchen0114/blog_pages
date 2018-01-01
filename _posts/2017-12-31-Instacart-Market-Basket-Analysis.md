@@ -99,8 +99,9 @@ def timezone(s):
 ### cycle
 
 *  min, max, median, mean, std of dat_since_prior_order
-*  total order count of products, total reorder count of products, ratio
-*  total user count of products
+*  total order count
+*  total reorder count and ratio
+*  total user count
 *  order count / user count
 
 ### co-occur
@@ -116,7 +117,7 @@ def timezone(s):
 
 ### together
 
-*  min, max, mean, median, std of total order size when this product is bought
+*  min, max, mean, median, std of order size when this product is bought
 
 ### streak
 
@@ -161,3 +162,87 @@ def timezone(s):
 
 ### total_buy
 
+*  order count by user and product
+*  ratio: above count / order_sequence_number
+*  near 5 orders above features
+
+### reorder_all
+
+*  reorder situation in previous **t** order (t: 1~20)
+
+### last_order_date
+
+*  days since last order this item
+
+### buy_item_in_a_row
+
+*  count of orders users have bought this item in a row
+*  above count / order_sequence_number
+
+### last_order_number
+
+*  the last order_sequence_number user bought this item
+*  diff between above number and current order_sequence_number
+
+### mean_pos_cart
+
+*  min, max, mean, median, std of user add to cart this item
+*  near 5 orders above statistics features
+
+### timezone_dow
+
+*  count by user, product and timezone (or day_of_week)
+*  ratio1: above count / count by user and product
+*  ratio2: above count / count by user and timezone (or day_of_week)
+
+### order_ratio_by_chance
+
+*  ratio = count / chance
+
+   count: order count by user and product
+
+   chance: max order_sequence_number by user - min order_sequence_number by user and product
+
+*  above ratio in near 5 orders
+
+### repeat_within_today
+
+*  how many times user buy this item within today
+
+### cycle
+
+*  min, max, mean, median, std of days_since_last_order_this_item
+*  near 5 orders above features
+
+### aisle_dep
+
+### co-occur
+
+*  min, max, median, mean, std of order size when this user buy this item
+
+*  ```Python
+   tbl['user_order_size-min']  - tbl['useritem_cooccur-min']
+   tbl['useritem_cooccur-max'] - tbl['useritem_cooccur-min']
+   tbl['user_order_size-max'] - tbl['useritem_cooccur-max']
+   ```
+
+   where user_order_size-min(max) means min/max order size by user
+
+### streak
+
+### replacement
+
+## Day Time Feature
+
+### how_many_come
+
+*  normalized order and user count by day_of_week
+
+*  normalized order and user count by hour_of_day
+
+*  ```python
+   dow['dow_rank_diff'] = dow.dow_order_cnt.rank() - dow.dow_item_cnt.rank()
+   hour['hour_rank_diff'] = hour.hour_order_cnt.rank() - hour.hour_item_cnt.rank()
+   ```
+
+   ​
