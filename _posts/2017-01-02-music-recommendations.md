@@ -1,5 +1,5 @@
 ---
-title: "WSDM-KKBos-Music-Recommendations"
+title: "KKBos-Music-Recommendations"
 comments: true
 share: true
 toc: true
@@ -9,7 +9,7 @@ tags:
   - Kaggel
 ---
 
-# Data Description
+## Data Description
 
 In this task, you will be asked to predict the chances of a user listening to a song repetitively after the first observable listening event within a time window was triggered. If there are recurring listening event(s) triggered within a month after the user’s very first observable listening event, its target is marked 1, and 0 otherwise in the training set. The same rule applies to the testing set.
 
@@ -17,7 +17,7 @@ KKBOX provides a training data set consists of information of the first observab
 
 The train and the test data are selected from users listening history in a given time period. Note that this time period is chosen to be before the [WSDM-KKBox Churn Prediction](https://www.kaggle.com/c/kkbox-churn-prediction-challenge) time period. The train and test sets are split based on time, and the split of public/private are based on unique user/song pairs.
 
-## train.csv
+### train.csv
 
 -  msno: user id
 -  song_id: song id
@@ -26,7 +26,7 @@ The train and the test data are selected from users listening history in a given
 -  source_type: an entry point a user first plays music on mobile apps. An entry point could be `album`, `online-playlist`, `song` .. etc.
 -  target: this is the target variable. `target=1` means there are recurring listening event(s) triggered within a month after the user’s very first observable listening event, `target=0` otherwise .
 
-## test.csv
+### test.csv
 
 -  id: row id (will be used for submission)
 -  msno: user id
@@ -35,14 +35,14 @@ The train and the test data are selected from users listening history in a given
 -  source_screen_name: name of the layout a user sees.
 -  source_type: an entry point a user first plays music on mobile apps. An entry point could be `album`, `online-playlist`, `song` .. etc.
 
-## sample_submission.csv
+### sample_submission.csv
 
 sample submission file in the format that we expect you to submit
 
 -  id: same as `id` in `test.csv`
 -  target: this is the target variable. `target=1` means there are recurring listening event(s) triggered within a month after the user’s very first observable listening event, `target=0` otherwise .
 
-## songs.csv
+### songs.csv
 
 The songs. Note that data is in unicode.
 
@@ -54,7 +54,7 @@ The songs. Note that data is in unicode.
 -  lyricist
 -  language
 
-## members.csv
+### members.csv
 
 user information.
 
@@ -66,17 +66,17 @@ user information.
 -  registration_init_time: format `%Y%m%d`
 -  expiration_date: format `%Y%m%d`
 
-## song_extra_info.csv
+### song_extra_info.csv
 
 -  song_id
 -  song name - the name of the song.
 -  isrc - [International Standard Recording Code](https://en.wikipedia.org/wiki/International_Standard_Recording_Code), theoretically can be used as an identity of a song. However, what worth to note is, ISRCs generated from providers have not been officially verified; therefore the information in ISRC, such as country code and reference year, can be misleading/incorrect. Multiple songs could share one ISRC since a single recording could be re-published several times.
 
-# Preprocessing
+## Preprocessing
 
 Simply label encoding on categorical features, note that LabelEncoder cannot process columns with mixed type, so nan must be changed to string or int if exist.
 
-# Creating Features
+## Creating Features
 
 Splitting train into two parts, where last 35% of train for generation table of features, and the rest of the data was used as a history. 
 
