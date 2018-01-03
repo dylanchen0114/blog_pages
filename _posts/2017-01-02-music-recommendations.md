@@ -2,7 +2,7 @@
 title: "KKBos-Music-Recommendations-3rd-place-solution"
 comments: true
 share: true
-toc: false
+toc: true
 categories:
   - Kaggle
 tags:
