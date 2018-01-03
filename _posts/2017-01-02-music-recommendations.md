@@ -1,5 +1,5 @@
 ---
-title: "KKBos-Music-Recommendations"
+title: "KKBos-Music-Recommendations-3rd-place-solution"
 comments: true
 share: true
 toc: true
@@ -121,4 +121,79 @@ categorical_columns = all_data.columns.difference(not_categorical_columns)
 
 9. regression
 
-10. matrix_factorization
+10. matrix_factorization: https://github.com/lyst/lightfm
+
+    ```python
+    def matrix_factorization(df, df_history):
+        cols = ['msno', 'source_type']
+        group = get_group(df, cols)
+        group_history = get_group(df_history, cols)
+
+        encoder = LabelEncoder()
+        encoder.fit(pd.concat([group, group_history]))
+
+        df['user_id'] = encoder.transform(group)
+        df_history['user_id'] = encoder.transform(group_history)
+
+        num_users = max(df.user_id.max(), df_history.user_id.max()) + 1
+        num_items = max(df.song_id.max(), df_history.song_id.max()) + 1
+        num_msno = max(df.msno.max(), df_history.msno.max()) + 1
+
+        M = coo_matrix(
+            (df_history.target, ( df_history.user_id, df_history.song_id)),
+            shape=(num_users, num_items)
+        )
+
+        user_features = pd.concat([df, df_history])[['msno', 'user_id']].drop_duplicates()
+
+        user_features = coo_matrix(
+            (np.ones(len(user_features)), (user_features.user_id, user_features.msno)),
+            shape=(num_users, num_msno)
+        )
+
+        user_features = sp.hstack([sp.eye(num_users), user_features])
+
+        model = LightFM(no_components=50, learning_rate=0.1)
+
+        model.fit(
+            M, 
+            epochs=2, 
+            num_threads=50, 
+            user_features=user_features,
+        )
+        result = model.predict(
+            df.user_id.values, 
+            df.song_id.values, 
+            user_features=user_features,
+        )
+
+        return result
+    ```
+
+##Modeling
+
+Blending of xgboost and catboost as following, where "_mf" means with matrix_factorization
+
+```python
+p0_xgb_mf = joblib.load('p0_xgb_mf')
+p0_xgb = joblib.load('p0_xgb')
+p1_xgb_mf = joblib.load('p1_xgb_mf')
+p1_xgb = joblib.load('p1_xgb')
+
+p0_cb_mf = joblib.load('p0_cb_mf')
+p0_cb = joblib.load('p0_cb')
+p1_cb_mf = joblib.load('p1_cb_mf')
+p1_cb = joblib.load('p1_cb')
+
+
+p_cb = 0.6 * p0_cb + 0.4 * p1_cb
+p_cb_mf = 0.6 * p0_cb_mf + 0.4 * p1_cb_mf
+p_xgb = 0.6 * p0_xgb + 0.4 * p1_xgb
+p_xgb_mf = 0.6 * p0_xgb_mf + 0.4 * p1_xgb_mf
+
+p_c = 0.6 * p_cb_mf + 0.4 * p_cb
+p_x = 0.6 * p_xgb_mf + 0.4 * p_xgb
+
+p = 0.6 * p_c + 0.4 * p_x
+```
+
