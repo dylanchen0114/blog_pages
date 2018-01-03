@@ -121,7 +121,43 @@ categorical_columns = all_data.columns.difference(not_categorical_columns)
 
 9. regression
 
-10. matrix_factorization: https://github.com/lyst/lightfm
+   ```python
+   def regression(df_history, df, cols):
+       
+       group = get_group(df, cols)
+       group_history = get_group(df_history, cols)
+       
+       targets = {}
+       times = {}
+       for (y, t), u in zip(df_history[['target', 'time']].values, group_history):
+           if u not in targets:
+               targets[u] = [y]
+               times[u] = [t]
+           else:
+               targets[u].append(y)
+               times[u].append(t)
+               
+       linal_user = {}
+       for u in times:
+           if len(times[u]) > 1:
+               A = np.vstack([times[u], np.ones(len(times[u]))]).T
+               linal_user[u] = np.linalg.inv(A.T.dot(A)).dot(A.T).dot(targets[u])
+       
+       result = []
+       
+       for t, u in zip(df['time'], group):
+           if u not in times:
+               result.append(0.5)
+           else:
+               if len(times[u]) < 2:
+                   result.append(0.5)
+               else:
+                   result.append(linal_user[u].dot([t, 1]))
+
+       return result
+   ```
+
+10. matrix_factorization: [https://github.com/lyst/lightfm](https://github.com/lyst/lightfm)
 
     ```python
     def matrix_factorization(df, df_history):
@@ -170,7 +206,7 @@ categorical_columns = all_data.columns.difference(not_categorical_columns)
         return result
     ```
 
-##Modeling
+## Modeling
 
 Blending of xgboost and catboost as following, where "_mf" means with matrix_factorization
 
