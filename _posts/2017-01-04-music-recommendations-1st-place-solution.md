@@ -21,7 +21,7 @@ tags:
 
 1. how many songs each user **(train + test)** /artist/composer/lyricist/genre_id **("song.csv")** has.  Log1p transform
 2. how many users each song/artist/composer/lyricist/genre_id has **(train + test)**. Log1p transform
-3. Conditional probability features: for categorical features, P(source_type given msno), P(source_type given song_id) and so on. e.g, P(source_type|msno), given the user_id, calculate the probability that each source_type will occur.
+3. Conditional probability features: for categorical features, P(source_type given msno), P(source_type given song_id) and so on. e.g, P(source_type given msno), given the user_id, calculate the probability that each source_type will occur.
 
 ### isrc_process
 
