@@ -60,22 +60,30 @@ tags:
           [0, 0, 0, 0],
           [0, 0, 0, 1]])
 
+   """
+   practice
+   """
 
-   # practice
    concat = tr[['msno', 'song_id']].append(te[['msno', 'song_id']])
+
    print(len(concat))
 
    data = np.ones(len(concat))
+
    msno = concat['msno'].values
+
    song_id = concat['song_id'].values
 
    rating = sparse.coo_matrix((data, (msno, song_id)))
+
    rating = (rating > 0) * 1.0  # drop duplicates
+
    ```
 
 2. fit svds with the above sparse matrix and specific n_componets
 
    ```python
+
    [u, s, vt] = svds(rating, k=n_component)
 
    """
@@ -85,6 +93,7 @@ tags:
    s: sigma, singular value 
    """
    ```
+
 
 3. using u, vt as features, and adding to the data-frame
 
@@ -124,4 +133,18 @@ tags:
    te['artist_embeddings_dot'] = test_dot[:, 1]
    ```
 
-   ​
+
+### time_process
+
+since the data is time-sensitive, the row number index can be treated as time-stamp.
+
+1. calculate how many times the song_id/user_id occurs before or after; define a window size [10, 25, 500, 5000, 10000, 50000]
+2. until now, how many times the song_id/user_id has occurred
+3. the mean, std of time-stamp by user_id or song_id
+
+### before_after_process
+
+1. the value of ['song_id', 'source_type', 'source_screen_name', 'timestamp'] before this time
+2. the value of ['song_id', 'source_type', 'source_screen_name', 'timestamp'] after this time
+3. diff between this time and last time
+4. diff between this time and next time
