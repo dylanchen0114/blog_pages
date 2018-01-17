@@ -148,3 +148,73 @@ since the data is time-sensitive, the row number index can be treated as time-st
 2. the value of ['song_id', 'source_type', 'source_screen_name', 'timestamp'] after this time
 3. diff between this time and last time
 4. diff between this time and next time
+
+
+
+## modeling
+
+### features summary
+
+1. label encoding of song_id, msno, source_system_tab, source_screen_name, source_type, source, city, gender, registered_via, composer, lyricist, language ...
+
+   ```python
+   df['source'] = df['source_system_tab'] * 10000 + df['source_screen_name'] * 100 + df['source_type']
+   ```
+
+2. label encoding of before/after song_id, source_system_tab, source_screen_name, source_type by msno
+
+3. count how many artists, lyricist and composer each song has
+
+4. how many songs each user **(train + test)** /artist/composer/lyricist/genre_id **("song.csv")** has.  Log1p transform
+
+5. how many users each song/artist/composer/lyricist/genre_id has **(train + test)**. Log1p transform
+
+6. conditional probability features: given msno, calculate source_system_tab, source_screen_name, source, source_type, artist_name, first_genre_id, xxx, language, yy; given song, calculate source_system_tab, source_screen_name, source_type
+
+7. song and msno svds embedding dot
+
+8. song and msno svds component, song and artist svds component
+
+9. until now, how many times the song_id/user_id has occurred
+
+10. calculate how many times the song_id/user_id occurs before or after; define a window size [10, 25, 500, 5000, 10000, 50000]
+
+11. whether or not current source_type, artist_name is the same as before or after one
+
+12. song based features join on before/after song_id
+
+13. the mean, std of time-stamp by user_id or song_id
+
+14. upper and lower of time-stamp by user_id or song_id
+
+15. age
+
+16. song_length
+
+17. timestamp
+
+18. date diff
+
+### part of feature importance
+
+| importance | name                         |
+| ---------- | ---------------------------- |
+| 4237       | timestamp                    |
+| 3988       | msno_source_type_prob        |
+| 3097       | msno_till_now_cnt            |
+| 2967       | source_type                  |
+| 2929       | msno_source_screen_name_prob |
+| 2879       | msno_timestamp_std           |
+| 2713       | msno_artist_name_prob        |
+| 2697       | msno_source_system_tab_prob  |
+| 2621       | msno_rec_cnt                 |
+| 2553       | source_screen_name           |
+| 2517       | member_component_0           |
+| 2487       | time_left                    |
+| 2440       | msno_upper_time              |
+| 2355       | msno_language_prob           |
+| 2305       | msno_song_length             |
+| 2244       | msno_lower_time              |
+| 2107       | msno_source_type_4           |
+| 2103       | member_component_2           |
+| 2031       | expiration_date              |
