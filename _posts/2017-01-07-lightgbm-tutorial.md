@@ -17,7 +17,7 @@ https://github.com/Microsoft/LightGBM/blob/master/docs/Parameters-Tuning.rst
 Tune Parameters for the Leaf-wise (Best-first) Tree
 ---------------------------------------------------
 
-LightGBM uses the `leaf-wise <./Features.rst#leaf-wise-best-first-tree-growth>`__ tree growth algorithm, while many other popular tools use depth-wise tree growth.
+LightGBM uses the `leaf-wise` tree growth algorithm, while many other popular tools use depth-wise tree growth.
 Compared with depth-wise growth, the leaf-wise algorithm can converge much faster.
 However, the leaf-wise growth may be over-fitting if not used with the appropriate parameters.
 
@@ -50,7 +50,7 @@ For Faster Speed
 
 -  Use ``save_binary`` to speed up data loading in future learning
 
--  Use parallel learning, refer to `Parallel Learning Guide <./Parallel-Learning-Guide.rst>`__
+-  Use parallel learning, refer to `Parallel Learning Guide`
 
 
 For Better Accuracy
@@ -101,7 +101,7 @@ Python API: https://github.com/Microsoft/LightGBM/blob/master/docs/Parameters.rs
 
    -  ``predict``, alias= ``prediction``, ``test``, for prediction.
 
-   -  ``convert_model``, for converting model file into if-else format, see more information in `Convert model parameters <#convert-model-parameters>`
+   -  ``convert_model``, for converting model file into if-else format, see more information in `Convert model parameters `
 
    -  ``refit``, alias= ``refit_tree``, refit existing models with new data.
 
@@ -134,7 +134,7 @@ Python API: https://github.com/Microsoft/LightGBM/blob/master/docs/Parameters.rs
 
       -  ``multiclass``, `softmax`_ objective function, ``num_class`` should be set as well
 
-      -  ``multiclassova``, `One-vs-All`_ binary objective function, ``num_class`` should be set as well
+      -  ``multiclassova``, `One-vs-All` binary objective function, ``num_class`` should be set as well
 
    -  cross-entropy application
 
@@ -148,7 +148,7 @@ Python API: https://github.com/Microsoft/LightGBM/blob/master/docs/Parameters.rs
 
       -  the label should be ``int`` type in lambdarank tasks, and larger number represent the higher relevance (e.g. 0:bad, 1:fair, 2:good, 3:perfect)
 
-      -  `label_gain <#objective-parameters>`__ can be used to set the gain(weight) of ``int`` label
+      -  `label_gain <#objective-parameters>`can be used to set the gain(weight) of ``int`` label
 
       -  all values in ``label`` must be smaller than number of elements in ``label_gain``
 
@@ -160,7 +160,7 @@ Python API: https://github.com/Microsoft/LightGBM/blob/master/docs/Parameters.rs
 
    -  ``rf``, Random Forest
 
-   -  ``dart``, `Dropouts meet Multiple Additive Regression Trees`_
+   -  ``dart``, `Dropouts meet Multiple Additive Regression Trees`
 
    -  ``goss``, Gradient-based One-Side Sampling
 
@@ -204,14 +204,14 @@ Python API: https://github.com/Microsoft/LightGBM/blob/master/docs/Parameters.rs
 
    -  ``voting``, alias= ``voting_parallel``, voting parallel tree learner
 
-   -  refer to `Parallel Learning Guide <./Parallel-Learning-Guide.rst>`__ to get more details
+   -  refer to `Parallel Learning Guide` to get more details
 
 -  ``num_threads``, default= ``OpenMP_default``, type=int, alias= ``num_thread``, ``nthread``
 
    -  number of threads for LightGBM
 
    -  for the best speed, set this to the number of **real CPU cores**,
-      not the number of threads (most CPU using `hyper-threading`_ to generate 2 threads per CPU core)
+      not the number of threads (most CPU using `hyper-threading` to generate 2 threads per CPU core)
 
    -  do not set it too large if your dataset is small (do not use 64 threads for a dataset with 10,000 rows for instance)
 
@@ -228,7 +228,7 @@ Python API: https://github.com/Microsoft/LightGBM/blob/master/docs/Parameters.rs
    -  **Note**: for the faster speed, GPU use 32-bit float point to sum up by default, may affect the accuracy for some tasks.
       You can set ``gpu_use_dp=true`` to enable 64-bit float point, but it will slow down the training
 
-   -  **Note**: refer to `Installation Guide <./Installation-Guide.rst#build-gpu-version>`__ to build with GPU
+   -  **Note**: refer to `Installation Guide ` to build with GPU
 
 Learning Control Parameters
 ---------------------------
@@ -792,39 +792,39 @@ You can specific query/group id in data file now. Please refer to parameter ``gr
 
 
 
-Laurae++ Interactive Documentation: https://sites.google.com/view/lauraepp/parameters
+Laurae++ Interactive Documentation: [https://sites.google.com/view/lauraepp/parameters](https://sites.google.com/view/lauraepp/parameters)
 
-Huber loss: https://en.wikipedia.org/wiki/Huber_loss
+Huber loss: [https://en.wikipedia.org/wiki/Huber_loss](https://en.wikipedia.org/wiki/Huber_loss)
 
-Quantile regression: https://en.wikipedia.org/wiki/Quantile_regression
+Quantile regression: [https://en.wikipedia.org/wiki/Quantile_regression](https://en.wikipedia.org/wiki/Quantile_regression)
 
-MAPE loss: https://en.wikipedia.org/wiki/Mean_absolute_percentage_error
+MAPE loss: [https://en.wikipedia.org/wiki/Mean_absolute_percentage_error](https://en.wikipedia.org/wiki/Mean_absolute_percentage_error)
 
-Fair loss: https://www.kaggle.com/c/allstate-claims-severity/discussion/24520
+Fair loss: [https://www.kaggle.com/c/allstate-claims-severity/discussion/24520](https://www.kaggle.com/c/allstate-claims-severity/discussion/24520)
 
-Poisson regression: https://en.wikipedia.org/wiki/Poisson_regression
+Poisson regression: [https://en.wikipedia.org/wiki/Poisson_regression](https://en.wikipedia.org/wiki/Poisson_regression)
 
-lambdarank: https://papers.nips.cc/paper/2971-learning-to-rank-with-nonsmooth-cost-functions.pdf
+lambdarank: [https://papers.nips.cc/paper/2971-learning-to-rank-with-nonsmooth-cost-functions.pdf](https://papers.nips.cc/paper/2971-learning-to-rank-with-nonsmooth-cost-functions.pdf)
 
-Dropouts meet Multiple Additive Regression Trees: https://arxiv.org/abs/1505.01866
+Dropouts meet Multiple Additive Regression Trees: [https://arxiv.org/abs/1505.01866](https://arxiv.org/abs/1505.01866)
 
-hyper-threading: https://en.wikipedia.org/wiki/Hyper-threading
+hyper-threading: [https://en.wikipedia.org/wiki/Hyper-threading](https://en.wikipedia.org/wiki/Hyper-threading)
 
-SHAP values: https://arxiv.org/abs/1706.06060
+SHAP values: [https://arxiv.org/abs/1706.06060](https://arxiv.org/abs/1706.06060)
 
-NDCG: https://en.wikipedia.org/wiki/Discounted_cumulative_gain#Normalized_DCG
+NDCG: [https://en.wikipedia.org/wiki/Discounted_cumulative_gain#Normalized_DCG](https://en.wikipedia.org/wiki/Discounted_cumulative_gain#Normalized_DCG)
 
-MAP: https://en.wikipedia.org/wiki/Information_retrieval#Mean_average_precision
+MAP: [https://en.wikipedia.org/wiki/Information_retrieval#Mean_average_precision](https://en.wikipedia.org/wiki/Information_retrieval#Mean_average_precision)
 
-AUC: https://en.wikipedia.org/wiki/Receiver_operating_characteristic#Area_under_the_curve
+AUC: [https://en.wikipedia.org/wiki/Receiver_operating_characteristic#Area_under_the_curve](https://en.wikipedia.org/wiki/Receiver_operating_characteristic#Area_under_the_curve)
 
-log loss: https://en.wikipedia.org/wiki/Cross_entropy
+log loss: [https://en.wikipedia.org/wiki/Cross_entropy](https://en.wikipedia.org/wiki/Cross_entropy)
 
-softmax: https://en.wikipedia.org/wiki/Softmax_function
+softmax: [https://en.wikipedia.org/wiki/Softmax_function](https://en.wikipedia.org/wiki/Softmax_function)
 
-One-vs-All: https://en.wikipedia.org/wiki/Multiclass_classification#One-vs.-rest
+One-vs-All: [https://en.wikipedia.org/wiki/Multiclass_classification#One-vs.-rest](https://en.wikipedia.org/wiki/Multiclass_classification#One-vs.-rest)
 
-Kullback-Leibler divergence: https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence
+Kullback-Leibler divergence: [https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence](https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence)
 
 # Python Practice
 
@@ -869,7 +869,7 @@ params = {
     'num_threads': 16,
     'verbose': 0,
     'is_training_metric': 'True'
-  
+}
 print('Hyper-parameters:')
 print(params)
   
@@ -916,6 +916,10 @@ f = open('./lgb_record.csv', 'a')
 f.write(res)
 f.close()
 ```
+
+
+
+</br>
 
 | time             | model                               | feat_cnt | type | lr   | n_leaf | n_depth | min_data | feature_frac | bagging_frac | bagging_freq | l1   | l2    | min_gain | hessian | sample_rate | bst_rnd | trn_loss | trn_auc | val_loss | val_auc |
 | ---------------- | ----------------------------------- | -------- | ---- | ---- | ------ | ------- | -------- | ------------ | ------------ | ------------ | ---- | ----- | -------- | ------- | ----------- | ------- | -------- | ------- | -------- | ------- |
