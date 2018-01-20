@@ -6,7 +6,7 @@ toc: true
 categories:
   - Kaggle
 tags:
-  - Kaggel
+  - Kaggle
 ---
 
 ## Preprocessing
