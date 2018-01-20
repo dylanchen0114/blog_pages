@@ -1,5 +1,5 @@
 ---
-title: "LightGBM-Tutorial"
+title: "LightGBM-Tutorial-and-Python-Practice"
 comments: true
 share: true
 toc: true
@@ -9,13 +9,11 @@ tags:
   - model
 ---
 
-Parameters Tuning
-=================
+## Parameters Tuning
 
-https://github.com/Microsoft/LightGBM/blob/master/docs/Parameters-Tuning.rst
+[https://github.com/Microsoft/LightGBM/blob/master/docs/Parameters-Tuning.rst](https://github.com/Microsoft/LightGBM/blob/master/docs/Parameters-Tuning.rst)
 
-Tune Parameters for the Leaf-wise (Best-first) Tree
----------------------------------------------------
+### Tune Parameters for the Leaf-wise (Best-first) Tree
 
 LightGBM uses the `leaf-wise` tree growth algorithm, while many other popular tools use depth-wise tree growth.
 Compared with depth-wise growth, the leaf-wise algorithm can converge much faster.
@@ -39,8 +37,7 @@ To get good results using a leaf-wise tree, these are some important parameters:
 
 3. ``max_depth``. You also can use ``max_depth`` to limit the tree depth explicitly.
 
-For Faster Speed
-----------------
+### For Faster Speed
 
 -  Use bagging by setting ``bagging_fraction`` and ``bagging_freq``
 
@@ -53,8 +50,7 @@ For Faster Speed
 -  Use parallel learning, refer to `Parallel Learning Guide`
 
 
-For Better Accuracy
--------------------
+### For Better Accuracy
 
 -  Use large ``max_bin`` (may be slower)
 
@@ -66,8 +62,7 @@ For Better Accuracy
 
 -  Try ``dart``
 
-Deal with Over-fitting
-----------------------
+### Deal with Over-fitting
 
 -  Use small ``max_bin``
 
@@ -85,9 +80,11 @@ Deal with Over-fitting
 
 -  Try ``max_depth`` to avoid growing deep tree
 
-# Parameter API
+## Parameter API
 
 Python API: https://github.com/Microsoft/LightGBM/blob/master/docs/Parameters.rst
+
+### Core Parameters
 
 -  ``config``, default= ``""``, type=string, alias= ``config_file``
 
@@ -230,8 +227,7 @@ Python API: https://github.com/Microsoft/LightGBM/blob/master/docs/Parameters.rs
 
    -  **Note**: refer to `Installation Guide ` to build with GPU
 
-Learning Control Parameters
----------------------------
+### Learning Control Parameters
 
 -  ``max_depth``, default= ``-1``, type=int
 
@@ -361,8 +357,7 @@ Learning Control Parameters
 
    -  set this to larger value for more accurate result, but it will slow down the training speed
 
-IO Parameters
--------------
+### IO Parameters
 
 -  ``max_bin``, default= ``255``, type=int
 
@@ -611,8 +606,7 @@ Objective Parameters
 
    -  will fit ``sqrt(label)`` instead and prediction result will be also automatically converted to ``pow2(prediction)``
 
-Metric Parameters
------------------
+### Metric Parameters
 
 -  ``metric``, default={``l2`` for regression, ``binary_logloss`` for binary classification, ``ndcg`` for lambdarank}, type=multi-enum
 
@@ -666,8 +660,7 @@ Metric Parameters
 
    -  `NDCG`_ evaluation positions, separated by ``,``
 
-Network Parameters
-------------------
+### Network Parameters
 
 Following parameters are used for parallel learning, and only used for base (socket) version.
 
@@ -693,8 +686,7 @@ Following parameters are used for parallel learning, and only used for base (soc
 
    -  each line contains one IP and one port for one machine. The format is ``ip port``, separate by space
 
-GPU Parameters
---------------
+### GPU Parameters
 
 -  ``gpu_platform_id``, default= ``-1``, type=int
 
@@ -712,8 +704,7 @@ GPU Parameters
 
    -  set to ``true`` to use double precision math on GPU (default using single precision)
 
-Convert Model Parameters
-------------------------
+### Convert Model Parameters
 
 This feature is only supported in command line version yet.
 
@@ -727,8 +718,7 @@ This feature is only supported in command line version yet.
 
    -  output file name of converted model
 
-Others
-------
+### Others
 
 Continued Training with Input Score
 
@@ -826,7 +816,7 @@ One-vs-All: [https://en.wikipedia.org/wiki/Multiclass_classification#One-vs.-res
 
 Kullback-Leibler divergence: [https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence](https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence)
 
-# Python Practice
+## Python Practice
 
 ```python
 import numpy as np
@@ -919,7 +909,9 @@ f.close()
 
 
 
-</br>
+---
+
+
 
 | time             | model                               | feat_cnt | type | lr   | n_leaf | n_depth | min_data | feature_frac | bagging_frac | bagging_freq | l1   | l2    | min_gain | hessian | sample_rate | bst_rnd | trn_loss | trn_auc | val_loss | val_auc |
 | ---------------- | ----------------------------------- | -------- | ---- | ---- | ------ | ------- | -------- | ------------ | ------------ | ------------ | ---- | ----- | -------- | ------- | ----------- | ------- | -------- | ------- | -------- | ------- |
