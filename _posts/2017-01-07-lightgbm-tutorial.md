@@ -82,7 +82,7 @@ To get good results using a leaf-wise tree, these are some important parameters:
 
 ## Parameter API
 
-Python API: https://github.com/Microsoft/LightGBM/blob/master/docs/Parameters.rst
+Python API: [https://github.com/Microsoft/LightGBM/blob/master/docs/Parameters.rst](https://github.com/Microsoft/LightGBM/blob/master/docs/Parameters.rst)
 
 ### Core Parameters
 
