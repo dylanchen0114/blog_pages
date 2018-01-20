@@ -547,8 +547,7 @@ Python API: https://github.com/Microsoft/LightGBM/blob/master/docs/Parameters.rs
 
    -  separate by ``,`` for multi-validation data
 
-Objective Parameters
---------------------
+### Objective Parameters
 
 -  ``sigmoid``, default= ``1.0``, type=double
 
@@ -556,7 +555,7 @@ Objective Parameters
 
 -  ``alpha``, default= ``0.9``, type=double
 
-   -  parameter for `Huber loss`_ and `Quantile regression`_. Will be used in ``regression`` task
+   -  parameter for `Huber loss` and `Quantile regression`. Will be used in ``regression`` task
 
 -  ``fair_c``, default= ``1.0``, type=double
 
@@ -564,7 +563,7 @@ Objective Parameters
 
 -  ``poisson_max_delta_step``, default= ``0.7``, type=double
 
-   -  parameter for `Poisson regression`_ to safeguard optimization
+   -  parameter for `Poisson regression` to safeguard optimization
 
 -  ``scale_pos_weight``, default= ``1.0``, type=double
 
