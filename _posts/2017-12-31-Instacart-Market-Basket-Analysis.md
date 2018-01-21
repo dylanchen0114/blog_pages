@@ -198,7 +198,7 @@ def timezone(s):
 
 ### mean_pos_cart
 
-*  min, max, mean, median, std of user add to cart this item
+*  sum, min, max, mean, median, std of user add to cart this item
 *  near 5 orders above statistics features
 
 ### timezone_dow
