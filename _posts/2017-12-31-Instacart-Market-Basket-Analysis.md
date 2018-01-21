@@ -120,6 +120,8 @@ def timezone(s):
 
 ### streak
 
+*  mean, max and median of count that users buy this product in a row
+
 ### 1to1
 
 *  ratio of 1to1, 11to1, 10to1, 111to1, 110to1, 101to1, 100to1
@@ -155,7 +157,18 @@ def timezone(s):
 
 ### first_order
 
-### one_diff
+*  probability that this product will be repurchased after first order of each user
+
+   ratio = counts / chance
+
+   chance: count of each user buy this product first time
+
+   counts: count of each user repurchase this product after first buy
+
+### onb_diff
+
+*  diff of order number of each user buy this product
+*  mean, std, min, max, median, skew of the above diff
 
 ## User x Item Feature
 
@@ -215,6 +228,9 @@ def timezone(s):
 
 ### aisle_dep
 
+*  count by user, aisle/dep
+*  normalized count by user, aisle/dep
+
 ### co-occur
 
 *  min, max, median, mean, std of order size when user buy this item
@@ -229,7 +245,12 @@ def timezone(s):
 
 ### streak
 
-### replacement
+*  count of user buy each product in a row
+
+### replacement **
+
+*  replacement ratio of each product
+*  the min, max, mean, median of the above ratio (code 316&011)
 
 ## Day Time Feature
 
