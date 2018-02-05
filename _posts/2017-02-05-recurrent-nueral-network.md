@@ -1,6 +1,7 @@
 ---
 title: "Recurrent-Neural-Networks"
 comments: true
+mathjax: true
 share: true
 toc: true
 ---
