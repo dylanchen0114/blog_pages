@@ -61,9 +61,7 @@ class RNNNumpy:
 ```
 
 
-### Training RNN
-
-**Back Propagation Through Time**
+### Training RNN — Back Propagation Through Time
 
 BPTT 的基本原理和 BP 算法是一样的，同样是三步：
 
