@@ -17,5 +17,33 @@ RNN被称为recurrent主要由于其会对每一个序列做相同的操作，�
 上图展示了单个RNN完全展开下的情况，举例来说如果想计算一个词语数为5的句子，那么该序列会被展开成一个5层的神经网络，以下详细说明图中各符号的意义：
 
 *  $$x_t$$表示在第t步时的输入值。例如$x_1$表示的是句子第二个词的one-hot向量
-*  $s_t​$表示在第t步时的hidden state。即上述所提到的'memory'，其由先前步骤的hidden state与当前t步的输入计算而得：$s_t = f(U*x_t+W*s_{t-1}))​$，这里的函数f为激活函数，通常为tanh或Relu。$s_{-1}​$通常会是0初始值
-*  $o_t$是在第t步时的输出值。
+*  $$s_t$$表示在第t步时的hidden state。即上述所提到的'memory'，其由先前步骤的hidden state与当前t步的输入计算而得：$$s_t = f(U*x_t+W*s_{t-1}))$$，这里的函数f为激活函数，通常为tanh或Relu。$$s_{-1}$$通常会是0初始值
+*  $$o_t$$是在第t步时的输出值。
+
+### Initialization
+
+对于参数U、V、W的初始化，不能简单地将其都设为0，会造成所有层的参数计算都对称。通常不同的激活函数会对应不同的初始化方法。如果这里用tanh来作为初始化函数的话，比较好的方式是将其控制在$$\left[-\frac{1}{\sqrt{n}}, \frac{1}{\sqrt{n}}\right]$$间，其中n是先前层的输出维度。
+
+如果这里选取$$x_t$$的维度为8000，hidden layer size为100，则有：
+
+$$\begin{aligned}s_t &= \tanh(Ux_t + Ws_{t-1}) \\o_t &= \mathrm{softmax}(Vs_t)\end{aligned}$$
+
+
+
+$$\begin{aligned}x_t & \in \mathbb{R}^{8000} \\o_t & \in \mathbb{R}^{8000} \\s_t & \in \mathbb{R}^{100} \\U & \in \mathbb{R}^{100 \times 8000} \\V & \in \mathbb{R}^{8000 \times 100} \\W & \in \mathbb{R}^{100 \times 100} \end{aligned}$$
+
+
+
+```python
+class RNNNumpy:
+  
+  def __init__(self, word_dim, hidden_dim=100, bptt_truncate=4):
+    # Assign instance variables
+    self.word_dim = word_dim
+    self.hidden_dim = hidden_dim
+    self.bptt_truncate = bptt_truncate
+    # Randomly initialize the network parameters
+    self.U = np.random.uniform(-np.sqrt(1./word_dim), np.sqrt(1./word_dim), (hidden_dim, word_dim))
+    self.V = np.random.uniform(-np.sqrt(1./hidden_dim), np.sqrt(1./hidden_dim), (word_dim, hidden_dim))
+    self.W = np.random.uniform(-np.sqrt(1./hidden_dim), np.sqrt(1./hidden_dim), (hidden_dim, hidden_dim))
+```
