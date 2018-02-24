@@ -79,3 +79,4 @@ python实现RNN：[https://github.com/dennybritz/rnn-tutorial-rnnlm](https://git
 ### Case Study
 
 [https://weiminwang.blog/2017/09/29/multivariate-time-series-forecast-using-seq2seq-in-tensorflow/](https://weiminwang.blog/2017/09/29/multivariate-time-series-forecast-using-seq2seq-in-tensorflow/)
+
