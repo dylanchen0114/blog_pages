@@ -8,6 +8,8 @@ toc: true
 
 ### Validation Strategy
 
+Data description: [https://www.kaggle.com/c/recruit-restaurant-visitor-forecasting/data](https://www.kaggle.com/c/recruit-restaurant-visitor-forecasting/data)
+
 The dataset period begins on 2016-01-01 and ends on 2017-05-31. (2017-04-23 — 2017-05-31 as submission test set)
 
 Take the last 42 days (2017-03-12 — 2017-04-22) as the offline test set.
@@ -30,7 +32,7 @@ To enrich the train data,  split the train as following: create different types 
 
 #### Split #2
 
-Other train periods as following:
+Other train periods as following (as offline validation set, also trained in model when in final submission):
 
 | Begin_Date |  End_Date  |
 | :--------: | :--------: |
@@ -55,7 +57,7 @@ np.expm1(pred)
 2. group by store_id, expected weighted visitors: weighted sum and weighted mean (past all days); fill nan with 0
 
    *  calculate day difference between visit date and begin date
-   *  take 0.985 ** day_diff as weight, recent behavior has a more large weight
+   *  take 0.985 ** day_diff as weight, recent behavior has a larger weight
    *  new visitors = weight * visitors
 
 3. group by store_id and dow, calculate past all/56/28/14 days min/max/median/mean/count/std/skew visitors; fill nan with 0
@@ -81,7 +83,7 @@ np.expm1(pred)
 5. group by store_id and dow, expected weighted visitors: weighted sum and weighted mean (past all days); fill nan with 0
 
    -  calculate day difference between visit date and begin date
-   -  take 0.985 ** day_diff as weight, recent behavior has a more large weight; try different coef within [0.9,0.95,0.97,0.98,0.985,0.99,0.999,0.9999] 
+   -  take 0.985 ** day_diff as weight, recent behavior has a larger weight; try different coef within [0.9,0.95,0.97,0.98,0.985,0.99,0.999,0.9999] 
    -  new visitors = weight * visitors
 
 6. group by store_id and holiday flag1/2, calculate past all days min/max/median/mean/count/std/skew visitors; fill nan with 0
@@ -93,12 +95,12 @@ np.expm1(pred)
 1. group by genre name, calculate past all/56/28 days min/max/median/mean/count/std/skew visitors; fill nan with 0
 2. group by genre name, expected weighted visitors: weighted sum and weighted mean (past all days); fill nan with 0
    -  calculate day difference between visit date and begin date
-   -  take 0.985 ** day_diff as weight, recent behavior has a more large weight
+   -  take 0.985 ** day_diff as weight, recent behavior has a larger weight
    -  new visitors = weight * visitors
 3. group by genre name, calculate past all/56/28 days min/max/median/mean/count/std/skew visitors; fill nan with 0
 4. group by genre name and dow, expected weighted visitors: weighted sum and weighted mean (past all days); fill nan with 0
    -  calculate day difference between visit date and begin date
-   -  take 0.985 ** day_diff as weight, recent behavior has a more large weight
+   -  take 0.985 ** day_diff as weight, recent behavior has a larger weight
    -  new visitors = weight * visitors
 
 ### Reserve Features
