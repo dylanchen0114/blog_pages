@@ -28,14 +28,6 @@ toc: true
 
    * create embedding layers for the above input layer, define input_dim, output_dim, embeddings_initializer, embeddings_regularizer and input_length
 
-     - input_dim：大或等于0的整数，字典长度，即输入数据最大下标+1
-     - output_dim：大于0的整数，代表全连接嵌入的维度
-     - embeddings_initializer: 嵌入矩阵的初始化方法，为预定义初始化方法名的字符串，或用于初始化权重的初始化器。参考[initializers](https://keras-cn.readthedocs.io/en/latest/other/initializations)
-     - embeddings_regularizer: 嵌入矩阵的正则项，为[Regularizer](https://keras-cn.readthedocs.io/en/latest/other/regularizers)对象
-     - embeddings_constraint: 嵌入矩阵的约束项，为[Constraints](https://keras-cn.readthedocs.io/en/latest/other/constraints)对象
-     - mask_zero：布尔值，确定是否将输入中的‘0’看作是应该被忽略的‘填充’（padding）值，该参数在使用[递归层](https://keras-cn.readthedocs.io/en/latest/layers/recurrent_layer)处理变长输入时有用。设置为`True`的话，模型中后续的层必须都支持masking，否则会抛出异常。如果该值为True，则下标0在字典中不可用，input_dim应设置为|vocabulary| + 1。
-     - input_length：当输入序列的长度固定时，该值为其长度。如果要在该层后接`Flatten`层，然后接`Dense`层，则必须指定该参数，否则`Dense`层的输出维度无法自动推断。
-
      ```python
      tmp_embeddings = Embedding(int(train_embeddings[i].max()+1),
                                 K if i == 0 else K0,  # output_dim
@@ -119,8 +111,6 @@ toc: true
        usr_features.remove(col)
    ```
 
-   ​
-
    ```python
    # user feature array itself as intial value weights
    usr_input = Embedding(usr_feat.shape[0],
@@ -131,8 +121,6 @@ toc: true
                          name='usr_feat')(embedding_inputs[0])
    usr_input = Flatten(name='usr_feat_flatten')(usr_input)
    ```
-
-    
 
 5. create numerical song features layer as the above embedding process, based on song_id input layer
 
@@ -154,8 +142,6 @@ toc: true
            'msno_xxx_prob', 'msno_language_prob', 'msno_yy_prob', 'msno_source_prob', \
            'song_source_system_tab_prob', 'song_source_screen_name_prob', 'song_source_type_prob']
    ```
-
-   ​
 
    ```python
    context_input = Input(shape=(len(context_features),), name='context_feat')
@@ -191,7 +177,7 @@ context_input: context_features
 
 
 
-#### Into Fields
+### Into Fields
 
 user_profile: embedding_outputs[1:4] + [user_input, user_component_input, user_artist_component_input]
 
@@ -250,6 +236,8 @@ model.compile(loss='binary_crossentropy', optimizer=opt, metrics=['acc'])
 ```
 
 
+
+### STRUCTRUE 
 
 ![foo](https://kaggle2.blob.core.windows.net/forum-message-attachments/259372/8131/model.png)
 
