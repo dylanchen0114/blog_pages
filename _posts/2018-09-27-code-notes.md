@@ -6,7 +6,7 @@ share: true
 toc: true
 ---
 
-#### Hive
+### Hive
 
 ```sql
 dfs -du -h 'path'  -- show file in path in pretty format
@@ -53,7 +53,7 @@ select * from table
 
 
 
-#### Hadoop
+### Hadoop
 
 ```
 hadoop fs -get 'path/file_name'  # get hdfs partition to current directory
@@ -61,7 +61,7 @@ hadoop fs -get 'path/file_name'  # get hdfs partition to current directory
 
 
 
-#### Linux
+### Linux
 
 ```shell
 sz/rz  # download/upload file
@@ -82,7 +82,7 @@ fi
 
 
 
-#### Spark
+### Spark
 
 ```
 from pyspark.sql import functions as F
