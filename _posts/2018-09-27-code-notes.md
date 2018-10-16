@@ -111,6 +111,21 @@ table.write.option("path", '/user/recsys/rec/tmp.db/tmp_user_interest_similarity
     saveAsTable("tmp.tmp_user_interest_similarity_cid3")
 
 
-spark-submit --num-executors 200 --driver-memory 16g --executor-memory 20g --executor-cores 6 --master yarn-client similarity_calculate.py
+spark-submit --num-executors 200 --driver-memory 16g --executor-memory 20g --executor-cores 6 --conf spark.yarn.executor.memoryOverhead=4096 --master yarn-client similarity_calculate.py
+
+./bin/spark-submit \
+--[your class] \
+--master yarn \
+--deploy-mode cluster \
+--num-exectors 17
+--conf spark.yarn.executor.memoryOverhead=4096 \
+--executor-memory 35G \  //Amount of memory to use per executor process 
+--conf spark.yarn.driver.memoryOverhead=4096 \
+--driver-memory 35G \   //Amount of memory to be used for the driver process
+--executor-cores 5
+--driver-cores 5 \     //number of cores to use for the driver process 
+--conf spark.default.parallelism=170
+ /path/to/examples.jar
+
 ```
 
