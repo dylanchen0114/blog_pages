@@ -143,7 +143,7 @@ mask = sequence_parsed['mask']
 
 用batch或padded_batch来对定长或不定长的的样本进行batch的操作，将连续的几个example合并成一个，并通过repeat来达到epoch的数据量
 
-(其中padded_shapes对seq设置为None，e.g. padded_shapes = ([None], [None], [None], [], [], []))
+(其中padded_shapes对seq设置为None，e.g. padded_shapes = ([None], [None], [None], [], [], [])，会将每个seq都拉到最长样本的那个长度)
 
 ```python
 dataset = tf.contrib.data.TFRecordDataset(tfrecord_filename) \
