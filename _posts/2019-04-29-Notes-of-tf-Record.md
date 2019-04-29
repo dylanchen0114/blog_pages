@@ -1,4 +1,3 @@
-```
 ---
 title: "Notes of tf-Record"
 comments: true
@@ -9,9 +8,6 @@ categories:
 tags:
   - tensorflow
 ---
-```
-
-
 
 #### 如何用tf-record进行读写操作？
 
