@@ -1,5 +1,5 @@
 ---
-title: "Deep-Neural Network-for-YouTube-Recommendations"
+title: "Deep-Neural-Network-for-YouTube-Recommendations"
 comments: true
 share: true
 toc: true
@@ -76,6 +76,10 @@ loss = tf.reduce_mean(-tf.cast(y, dtype=tf.float32) * tf.log(yhat + 1e-24))
    example age和消除ad position bias做法类似，example age为样本产生的时间，即用户点击item的时间，而不是item上架的时间。
 
    用户在2.21号晚上8点0分这个时刻点击了某视频，产生了一条样本。后续训练的时候这条样本的Example Age=训练时的时刻 - 2.21号20:00时刻。而当线上serving阶段，将age至为0。
+
+
+### attention version
+…………………
 
 
 
