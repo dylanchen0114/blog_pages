@@ -1,4 +1,14 @@
-## Deep neural network for YouTube recommendations
+---
+title: "Notes of tf-Record"
+comments: true
+share: true
+toc: true
+categories:
+  - tensorflow
+tags:
+  - tensorflow
+---
+
 
 整个推荐系统由两个NN组成，一个用于用户候选集召回，另一个用于精准排序。
 
@@ -10,7 +20,7 @@
 
 ### candidate generation
 
-##### 样本构造
+#### 样本构造
 
 * 利用用户的历史对商品的行为序列，预测下一时刻用户会点击/购买的商品（youtube正样本定义为观看完视频），等同于一个多分类问题。
 
@@ -24,12 +34,12 @@
   - Up to serveral thousand negative samples
   - Altenatives include *hierarchical softmax* [TBU] (can speed up training)
 
-##### 特征类别
+#### 特征类别
 
 * 用户特征：用户历史item embedding的average，历史search query embedding的average，用户demographic与device特征embedding，concat至一起
 * Example age, to reflect time-dependent popularity, at serving time, set to zero
 
-##### Loss的设计
+#### Loss的设计
 
 ![useful image]({{ site.url }}/assets/images/image-20190505174226337.png)
 
@@ -43,8 +53,7 @@ loss = tf.reduce_mean(-tf.cast(y, dtype=tf.float32) * tf.log(yhat + 1e-24))
 ```
 
 
-
-##### FAQ
+#### FAQ
 
 1. 线上serving阶段，模型如何运作？
 
@@ -70,10 +79,9 @@ loss = tf.reduce_mean(-tf.cast(y, dtype=tf.float32) * tf.log(yhat + 1e-24))
 
 
 
-##### Reference
+#### Reference
 
 1. Paper: [https://static.googleusercontent.com/media/research.google.com/zh-CN//pubs/archive/45530.pdf](https://static.googleusercontent.com/media/research.google.com/zh-CN//pubs/archive/45530.pdf)
-
 2. 工程问题：https://zhuanlan.zhihu.com/p/52504407?utm_source=wechat_session&utm_medium=social&utm_oi=618410682702630912
 3. 利用DNN做推荐的实现过程总结: [https://zhuanlan.zhihu.com/p/38638747]( https://zhuanlan.zhihu.com/p/38638747)
 4. Yoho实现的例子: [https://github.com/sladesha/deep_learning/tree/master/YoutubeNetwork](https://github.com/sladesha/deep_learning/tree/master/YoutubeNetwork)
