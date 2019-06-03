@@ -18,9 +18,9 @@ tags:
 
 ![useful image]({{ site.url }}/assets/images/image-20190505172929916.png)
 
-### candidate generation
+## candidate generation
 
-#### 样本构造
+### 样本构造
 
 * 利用用户的历史对商品的行为序列，预测下一时刻用户会点击/购买的商品（youtube正样本定义为观看完视频），等同于一个多分类问题。
 
@@ -34,12 +34,12 @@ tags:
   - Up to serveral thousand negative samples
   - Altenatives include *hierarchical softmax* [TBU] (can speed up training)
 
-#### 特征类别
+### 特征类别
 
 * 用户特征：用户历史item embedding的average，历史search query embedding的average，用户demographic与device特征embedding，concat至一起
 * Example age, to reflect time-dependent popularity, at serving time, set to zero
 
-#### Loss的设计
+### Loss的设计
 
 ![useful image]({{ site.url }}/assets/images/image-20190505174226337.png)
 
@@ -53,7 +53,7 @@ loss = tf.reduce_mean(-tf.cast(y, dtype=tf.float32) * tf.log(yhat + 1e-24))
 ```
 
 
-#### FAQ
+### FAQ
 
 1. 线上serving阶段，模型如何运作？
 
